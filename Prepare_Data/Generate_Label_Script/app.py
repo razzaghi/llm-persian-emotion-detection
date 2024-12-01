@@ -61,7 +61,7 @@ def process_texts(input_csv, output_csv, subject):
             
     print(f"Total texts processed: {processed_count}")
 
-subject = "E-commerce comments"  
+subject = "نظرات محصولات فروشگاهی"  
 process_texts('../Input_Data/input.csv', '../OutPut_Data/output.csv', subject)
 
 
