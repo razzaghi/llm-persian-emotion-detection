@@ -34,6 +34,7 @@ def label_generator(client, subject, text):
 def process_texts(input_csv, output_csv, subject):
     client = initialize_openai_client(OPENAI_API_KEY)
     processed_count = 0
+    ignore_count = 3870
 
     with open(input_csv, 'r', newline='', encoding='utf-8') as infile, \
          open(output_csv, 'a', newline='', encoding='utf-8') as outfile:
@@ -42,22 +43,26 @@ def process_texts(input_csv, output_csv, subject):
         
         writer = csv.DictWriter(outfile, fieldnames=fieldnames)
 
-        if outfile.tell() == 0:
-            writer.writeheader()
-        
-        for row in reader:
-            text = row['text']  
-            row_id = row['id'] 
-            try:
-                label = label_generator(client, subject, text)
-            except Exception as e:
-                print(f"Error processing text '{text}': {e}")
-                label = ''
-            row['label'] = label  
-            writer.writerow(row) 
-            outfile.flush()
-            processed_count += 1 
-            print(f"Processed {processed_count} texts")
+        if processed_count > ignore_count:
+
+            if outfile.tell() == 0:
+                writer.writeheader()
+            
+            for row in reader:
+                text = row['text']  
+                row_id = row['id'] 
+                try:
+                    label = label_generator(client, subject, text)
+                except Exception as e:
+                    print(f"Error processing text '{text}': {e}")
+                    label = ''
+                row['label'] = label  
+                writer.writerow(row) 
+                outfile.flush()
+                processed_count += 1 
+                print(f"Processed {processed_count} texts")
+        else:
+            processed_count += 1
             
     print(f"Total texts processed: {processed_count}")
 
