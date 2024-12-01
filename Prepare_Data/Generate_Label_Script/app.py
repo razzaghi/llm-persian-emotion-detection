@@ -43,12 +43,12 @@ def process_texts(input_csv, output_csv, subject):
         
         writer = csv.DictWriter(outfile, fieldnames=fieldnames)
 
-        if processed_count > ignore_count:
+        if outfile.tell() == 0:
+            writer.writeheader()
+        
+        for row in reader:
+            if processed_count > ignore_count:
 
-            if outfile.tell() == 0:
-                writer.writeheader()
-            
-            for row in reader:
                 text = row['text']  
                 row_id = row['id'] 
                 try:
@@ -61,8 +61,9 @@ def process_texts(input_csv, output_csv, subject):
                 outfile.flush()
                 processed_count += 1 
                 print(f"Processed {processed_count} texts")
-        else:
-            processed_count += 1
+            else:
+                processed_count += 1
+            
             
     print(f"Total texts processed: {processed_count}")
 
