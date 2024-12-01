@@ -34,7 +34,7 @@ def label_generator(client, subject, text):
 def process_texts(input_csv, output_csv, subject):
     client = initialize_openai_client(OPENAI_API_KEY)
     processed_count = 0
-    ignore_count = 3870
+    ignore_count = 3910
 
     with open(input_csv, 'r', newline='', encoding='utf-8') as infile, \
          open(output_csv, 'a', newline='', encoding='utf-8') as outfile:
