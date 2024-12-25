@@ -1,0 +1,5 @@
+openai == 1.55.3
+python-dotenv
+tiktoken
+emoji
+fuzzywuzzy
