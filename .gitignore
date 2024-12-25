@@ -166,3 +166,5 @@ cython_debug/
 *.txt
 *venv
 .venv
+*.csv
+.csv
