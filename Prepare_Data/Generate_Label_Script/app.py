@@ -49,7 +49,7 @@ def process_row(client, row):
 def process_texts_multithread(input_csv, output_csv, num_threads=8):
     client = initialize_openai_client(OPENAI_API_KEY)
     processed_count = 0
-    ignore_count = 3910
+    ignore_count = 370725
 
     with open(input_csv, 'r', newline='', encoding='utf-8') as infile, \
          open(output_csv, 'a', newline='', encoding='utf-8') as outfile:
