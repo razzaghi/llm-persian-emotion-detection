@@ -1,7 +1,7 @@
 import pandas as pd
 import ast
 
-file_path = "llm-persian-emotion-detection/Prepare_Data/OutPut_Data/output.csv"
+file_path = "maped_and_adjusted_labels.csv"
 df = pd.read_csv(file_path)
 
 def clean_label_format(label):
@@ -16,9 +16,9 @@ def clean_label_format(label):
 
 df['label'] = df['label'].apply(clean_label_format)
 
-positive_labels = {'Like', 'Love', 'Happiness', 'Excitement', 'Gratitude', 'Satisfaction', 'Hope', 'Trust', 'Funny'}
+positive_labels = {'Like', 'Love', 'Happiness', 'Excitement', 'Gratitude', 'Satisfaction', 'Hope', 'Trust', 'Funny','Advice'}
 negative_labels = {'Embarrassment', 'Guilt', 'Anger', 'Sadness', 'Fear', 'Anxiety', 'Despair', 'Hate', 'Criticism', 'Regret', 'Worry'}
-neutral_labels = {'Surprise', 'Neutral'}
+neutral_labels = {'Surprise', 'Neutral','Request'}
 
 all_labels = positive_labels | negative_labels | neutral_labels
 

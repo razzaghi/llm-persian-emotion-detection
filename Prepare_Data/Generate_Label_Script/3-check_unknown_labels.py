@@ -4,10 +4,10 @@ import ast
 specified_labels = set([
     "Like", "Embarrassment", "Guilt", "Love", "Happiness", "Surprise", "Anger", "Sadness", "Fear", "Anxiety",
     "Excitement", "Despair", "Satisfaction", "Funny", "Hate", "Gratitude", "Criticism", "Hope", "Neutral", "Worry",
-    "Trust", "Regret","Question"
+    "Trust", "Regret","Question","Request","Advice"
 ])
 
-input_csv_path = "llm-persian-emotion-detection/Prepare_Data/Generate_Label_Script/final_output_gpt_v1.csv"
+input_csv_path = "/Users/borhandarvishi/Desktop/llm-persian-emotion-detection/Prepare_Data/Generate_Label_Script/maped_label.csv"
 output_txt_path = "unknown_labels.txt"
 
 unknown_labels = set()

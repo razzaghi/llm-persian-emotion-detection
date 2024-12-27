@@ -1,37 +1,42 @@
 import csv
 import ast
 
+
 mapping = {
-    "Like": ["Dislike"],
+    "Like": ["Admiration", "Respect", "Care", "Acceptance", "Humility"],
     "Embarrassment": [],
-    "Guilt": [],
-    "Love": [],
-    "Happiness": [],
-    "Surprise": [],
-    "Anger": ["Frustration"],
-    "Sadness": ["Disappointment", "Nostalgia"],
-    "Fear": ["Warning"],
-    "Anxiety": [],
-    "Excitement": [],
-    "Despair": [],
-    "Satisfaction": ["Pride", "Relief"],
+    "Guilt": ["Regret", "Forgiveness"],
+    "Love": ["Admiration", "Care", "Empathy", "Sympathy"],
+    "Happiness": ["Satisfaction", "Pride"],
+    "Surprise": ["Anticipation"],
+    "Anger": ["Annoyance", "Frustration"],
+    "Sadness": ["Disappointment", "Nostalgia", "Weakness"],
+    "Fear": ["Warning", "Nervousness", "Urgency"],
+    "Anxiety": ["Nervousness", "Stress", "Impatience", "Hurry"],
+    "Excitement": ["Anticipation"],
+    "Despair": ["Pain", "Fatigue", "Discomfort", "Cold"],
+    "Satisfaction": ["Pride", "Relief", "Understanding"],
     "Funny": [],
-    "Hate": ["Disgust", "Dislike"],
-    "Gratitude": ["Thankfulness"],
-    "Criticism": ["Suggestion"],
-    "Hope": ["Curiosity", "Expectation"],
-    "Neutral": ["Confusion"],
-    "Worry": ["Concern"],
-    "Trust": [],
-    "Regret": []
+    "Hate": ["Disgust", "Dislike", "Distrust"],
+    "Gratitude": ["Thankfulness", "Empathy"],
+    "Criticism": ["Suggestion", "Dissatisfaction"],
+    "Hope": ["Curiosity", "Expectation", "Expectations", "Encouragement"],
+    "Neutral": ["Confusion", "Calm", "Calmness", "Patience"],
+    "Worry": ["Concern", "Uncertainty"],
+    "Trust": ["Confidence", "Responsibility", "Effort"],
+    "Regret": ["Guilt", "Forgiveness"],
+    "Request": ["Need", "Help", "Hunger", "Impatience"],
+    "Advice": ["Suggestion", "Encouragement"]
 }
+
+
 
 reverse_mapping = {v: k for k, values in mapping.items() for v in values}
 
-input_csv_path = "output_with_vibe_error_wrong_label.csv"
-output_csv_path = "final_output_gpt_v.csv"
+input_csv_path = "/Users/borhandarvishi/Desktop/llm-persian-emotion-detection/Prepare_Data/Generate_Label_Script/output_with_vibe_error_wrong_label.csv"
+output_csv_path = "maped_label.csv"
 
-with open(input_csv_path, "r", encoding="utf-8") as csvfile, open(output_csv_path, "w", encoding="utf-8", newline="") as outfile:
+with open(input_csv_path, "r", encoding="utf-8-sig") as csvfile, open(output_csv_path, "w", encoding="utf-8-sig", newline="") as outfile:
     reader = csv.DictReader(csvfile)
     fieldnames = reader.fieldnames
     writer = csv.DictWriter(outfile, fieldnames=fieldnames)
